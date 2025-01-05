@@ -72,7 +72,7 @@
     const yesButton = document.getElementById("yesButton");
     const container = document.getElementById("container");
 
-
+    // Function to move the "No" button to a random position
     function moveNoButton() {
       const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
       const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
@@ -80,10 +80,15 @@
       noButton.style.top = y + "px";
     }
 
+    // Make the "No" button move on hover
     noButton.addEventListener("mouseover", moveNoButton);
+
+    // Make the "No" button move on touch
     noButton.addEventListener("touchstart", moveNoButton);
+
+    // Remove everything and display "You are right!" when "Yes" is clicked
     yesButton.addEventListener("click", () => {
-      
+      // Clear the entire page
       container.innerHTML = '<div class="message">You are right!</div>';
     });
   </script>
