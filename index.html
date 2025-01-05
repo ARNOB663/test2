@@ -18,6 +18,7 @@
     }
     .container {
       text-align: center;
+      padding: 20px;
     }
     button {
       font-size: 16px;
@@ -41,6 +42,22 @@
       font-size: 24px;
       color: #4caf50;
     }
+
+    @media (max-width: 600px) {
+      body {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+      }
+      button {
+        width: 100%;
+        margin: 5px 0;
+      }
+      .no {
+        position: static;
+        margin-top: 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -49,22 +66,25 @@
     <button class="yes" id="yesButton">Yes</button>
     <button class="no" id="noButton">No</button>
   </div>
-
   <script>
     const noButton = document.getElementById("noButton");
     const yesButton = document.getElementById("yesButton");
     const container = document.getElementById("container");
 
-    // Make the "No" button move on hover
-    noButton.addEventListener("mouseover", () => {
-      // Generate random positions for the button
+    // Function to move the "No" button to a random position
+    function moveNoButton() {
       const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
       const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
-
-      // Move the button to the new random position
       noButton.style.left = x + "px";
       noButton.style.top = y + "px";
-    });
+    }
+
+    // Make the "No" button move on hover
+    noButton.addEventListener("mouseover", moveNoButton);
+
+    // Make the "No" button move on touch
+    noButton.addEventListener("touchstart", moveNoButton);
+    noButton.addEventListener("touchmove", moveNoButton);
 
     // Remove everything and display "You are right!" when "Yes" is clicked
     yesButton.addEventListener("click", () => {
@@ -72,5 +92,6 @@
       container.innerHTML = '<div class="message">You are right!</div>';
     });
   </script>
+  
 </body>
 </html>
