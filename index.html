@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funny Question</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f8ff;
+    }
+    .container {
+      text-align: center;
+    }
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      transition: all 0.2s ease;
+    }
+    .yes {
+      background-color: #4caf50;
+      color: white;
+    }
+    .no {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+    }
+    .message {
+      font-size: 24px;
+      color: #4caf50;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <h1>Is Anitya Barua female</h1>
+    <button class="yes" id="yesButton">Yes</button>
+    <button class="no" id="noButton">No</button>
+  </div>
+
+  <script>
+    const noButton = document.getElementById("noButton");
+    const yesButton = document.getElementById("yesButton");
+    const container = document.getElementById("container");
+
+    // Make the "No" button move on hover
+    noButton.addEventListener("mouseover", () => {
+      // Generate random positions for the button
+      const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+
+      // Move the button to the new random position
+      noButton.style.left = x + "px";
+      noButton.style.top = y + "px";
+    });
+
+    // Remove everything and display "You are right!" when "Yes" is clicked
+    yesButton.addEventListener("click", () => {
+      // Clear the entire page
+      container.innerHTML = '<div class="message">You are right!</div>';
+    });
+  </script>
+</body>
+</html>
