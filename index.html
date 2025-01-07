@@ -66,26 +66,18 @@
     <button class="yes" id="yesButton">Yes</button>
     <button class="no" id="noButton">No</button>
   </div>
-
-
   <script>
     const noButton = document.getElementById("noButton");
     const yesButton = document.getElementById("yesButton");
     const container = document.getElementById("container");
-
     function moveNoButton() {
       const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
       const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
       noButton.style.left = x + "px";
       noButton.style.top = y + "px";
     }
-
-   
     noButton.addEventListener("mouseover", moveNoButton);
-
-   
     noButton.addEventListener("touchstart", moveNoButton);
-
     yesButton.addEventListener("click", () => {
       container.innerHTML = '<div class="message">You are right!</div>';
     });
